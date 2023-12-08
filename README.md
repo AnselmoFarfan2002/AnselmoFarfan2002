@@ -1,16 +1,14 @@
-### Hi there 👋
+🤠 Hi, and welcome to my GitHub profile! Want you to know a little of me? 🐒<br>
+I'm a fullstack developer, (my heart goes out to JS)
 
-<!--
-**AnselmoFarfan2002/AnselmoFarfan2002** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<img src="https://img.shields.io/badge/-❤️JavaScript❤️-darkorange?style=for-the-badge" height="28"> <img src="https://img.shields.io/badge/-Python-blue?style=for-the-badge" height="28"> <img src="https://img.shields.io/badge/-C++-darkblue?style=for-the-badge" height="28">
 
-Here are some ideas to get you started:
+<img src="https://img.shields.io/badge/-Node.js-darkgreen?style=for-the-badge" height="28"> <img src="https://img.shields.io/badge/-Express-green?style=for-the-badge" height="28">
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<img src="https://img.shields.io/badge/-React-blueviolet?style=for-the-badge" height="28"> <img src="https://img.shields.io/badge/-Next.js-black?style=for-the-badge" height="28">
+
+<img src="https://img.shields.io/badge/-MongoDB-brightgreen?style=for-the-badge" height="28"> <img src="https://img.shields.io/badge/-MySQL-skyblue?style=for-the-badge" height="28">
+
+<img src="https://img.shields.io/badge/-HTML-orange?style=for-the-badge" height="28"> <img src="https://img.shields.io/badge/-CSS-blue?style=for-the-badge" height="28">
+
+Why the pic? Well... It's Monkey D. Luffy, A boy who is always happy despite everything 😃 and the JS? It's for JavaScript 😉
