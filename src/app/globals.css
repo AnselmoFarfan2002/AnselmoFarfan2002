@@ -1,0 +1,15 @@
+body {
+  background-color: #161513;
+}
+
+header button {
+  padding: 0 20px !important;
+}
+
+.gradient {
+  background: -webkit-linear-gradient(0deg, yellow, red);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: tomato;
+}
