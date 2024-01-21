@@ -1,3 +1,8 @@
+:root {
+  --lg: 1200px;
+  --md: 900px
+}
+
 body {
   background-color: #161513;
 }
@@ -12,4 +17,35 @@ header button {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: tomato;
+}
+
+.section-divider {
+  width: 100%;
+  height: 50px;
+  background: -webkit-linear-gradient(0deg, yellow, red);
+}
+
+section {
+  padding: 120px 80px;
+  justify-content: center;
+  max-width: var(--lg);
+  margin: auto !important;
+}
+
+@media (width < var(--md)) {
+  section {
+    padding: 40px 60px;
+  }
+}
+
+#skills svg {
+  width: 50px;
+}
+
+.card-skill {
+  transition: filter 0.3s ease !important;
+}
+
+.card-skill:hover {
+  filter: blur(5px);
 }

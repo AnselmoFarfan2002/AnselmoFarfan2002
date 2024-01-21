@@ -4,17 +4,12 @@ export default function Cover() {
   return (
     <Grid
       container
-      maxWidth={"lg"}
       component={"section"}
       id="cover"
       sx={{
-        px: 10,
-        py: 5,
-        mx: "auto",
         flexDirection: "row-reverse",
         width: "100%",
       }}
-      justifyContent={"center"}
       spacing={3}
     >
       <Grid
@@ -30,10 +25,29 @@ export default function Cover() {
         />
       </Grid>
       <Grid item md={8}>
-        <Typography variant="h2" className="gradient">
+        <Typography
+          variant="h2"
+          className="gradient"
+          sx={{
+            fontSize: {
+              xs: "3em",
+              sm: "3.5em",
+            },
+          }}
+        >
           Hello, I'm Anselmo
         </Typography>
-        <Typography variant="h3">Full Stack Developer</Typography>
+        <Typography
+          variant="h3"
+          sx={{
+            fontSize: {
+              xs: "2.5em",
+              md: "3em",
+            },
+          }}
+        >
+          Full Stack Developer
+        </Typography>
         <Typography variant="body" component={"p"} sx={{ my: 4 }}>
           I think of problems as solutions and make them real trought coding.{" "}
           <span style={{ fontWeight: "bold" }}>BTW</span>: Remember to view this
