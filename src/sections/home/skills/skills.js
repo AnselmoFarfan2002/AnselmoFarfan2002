@@ -3,11 +3,12 @@
 import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { skills } from "./data";
 import { useCallback } from "react";
+import SkillCard from "@/components/cards/skill-card";
 
 export default function Skills() {
   const onMouseOver = useCallback((e) => {
     document
-      .querySelectorAll(".card-skill")
+      .querySelectorAll("#skills .card-skill")
       .forEach((card) => (card.style.filter = "blur(5px)"));
 
     e.currentTarget.style.filter = "none";
@@ -48,29 +49,15 @@ export default function Skills() {
         }}
       >
         {skills.map((skill, i) => (
-          <Card
+          <SkillCard
             key={"skill" + i}
-            sx={{ width: "120px", height: "120px" }}
-            className="card-skill"
-            onMouseOver={onMouseOver}
-            onMouseOut={onMouseOut}
-          >
-            <CardContent
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                height: "100%",
-                rowGap: 1.5,
-              }}
-            >
-              {skill.icon}
-              <Typography variant="body2" fontWeight={"bold"}>
-                {skill.name}
-              </Typography>
-            </CardContent>
-          </Card>
+            icon={skill.icon}
+            name={skill.name}
+            cardProps={{
+              onMouseOver,
+              onMouseOut,
+            }}
+          />
         ))}
       </Grid>
     </Grid>

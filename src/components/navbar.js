@@ -25,7 +25,7 @@ export default function NavBar() {
   return (
     <AppBar sx={{ bgcolor: "transparent" }} position="absolute">
       <Toolbar>
-        <Typography sx={{ p: 3, flexGrow: 1 }}>
+        <Typography sx={{ p: 3, flexGrow: 1 }} color={"white"}>
           <span style={{ fontWeight: "bold" }}>Anselmo</span>Farfan
         </Typography>
         {!screenXS && (
@@ -36,10 +36,20 @@ export default function NavBar() {
             <Button color="light" startIcon={<PersonSearch />} title="About">
               About
             </Button>
-            <Button color="light" startIcon={<Widgets />} title="Projects">
+            <Button
+              color="light"
+              startIcon={<Widgets />}
+              title="Projects"
+              href="#projects"
+            >
               Projects
             </Button>
-            <Button color="light" startIcon={<Phone />} title="Contact">
+            <Button
+              color="light"
+              startIcon={<Phone />}
+              title="Contact"
+              href="mailto:anselmofarfan2002@gmail.com"
+            >
               Contact
             </Button>
             <IconButton

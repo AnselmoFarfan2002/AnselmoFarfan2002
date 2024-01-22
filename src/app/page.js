@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Cover from "@/sections/home/cover";
 import Projects from "@/sections/home/projects/projects";
 import Skills from "@/sections/home/skills/skills";
@@ -11,9 +12,10 @@ export default function Home() {
     <main>
       <Cover />
       <div className="section-divider" />
-      <Skills />
-      <div className="section-divider" />
       <Projects />
+      <div className="section-divider" />
+      <Skills />
+      <Footer />
     </main>
   );
 }

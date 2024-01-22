@@ -71,8 +71,8 @@ export default function Cover() {
           <Button
             fullWidth
             variant="contained"
-            color="secondary"
             sx={{ borderRadius: 10 }}
+            href="mailto:anselmofarfan2002@gmail.com"
           >
             Get in touch
           </Button>
@@ -81,6 +81,7 @@ export default function Cover() {
             variant="outlined"
             color="light"
             sx={{ borderRadius: 10 }}
+            href="#projects"
           >
             View ALL Works
           </Button>

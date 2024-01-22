@@ -1,7 +1,7 @@
 export default function SequelizeSVG() {
   return (
     <svg version="1.1" viewBox="0 0 90.688 104.58">
-      <g transform="matrix(.035278 0 0 -.035278 0 104.58)" fill-rule="evenodd">
+      <g transform="matrix(.035278 0 0 -.035278 0 104.58)" fillRule="evenodd">
         <path
           d="m1285.3 2534.2 917.7-522.1 367.64 212.27-1282 740.14-1288.4-740.14 367.64-212.27 917.37 522.1"
           fill="#52b0e7"

@@ -6,10 +6,10 @@ export const themeOptions = {
   palette: {
     type: "dark",
     primary: {
-      main: "#B16CEA",
+      main: "#FEA14D",
     },
     secondary: {
-      main: "#FEA14D",
+      main: "#FFFF00",
     },
     light: {
       main: "#F0F2F5",
@@ -20,6 +20,9 @@ export const themeOptions = {
     },
     text: {
       primary: "#F0F2F5",
+    },
+    info: {
+      main: '#66463d',
     },
   },
   typography: {

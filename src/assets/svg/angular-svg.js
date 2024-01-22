@@ -7,7 +7,7 @@ export default function AngularSVG() {
       viewBox="0 0 223 236"
       width="32"
     >
-      <g _ngcontent-ng-c3811030075="" clip-path="url(#a)">
+      <g _ngcontent-ng-c3811030075="" clipPath="url(#a)">
         <path
           _ngcontent-ng-c3811030075=""
           fill="url(#b)"
@@ -29,31 +29,31 @@ export default function AngularSVG() {
           y2="129.722"
           gradientUnits="userSpaceOnUse"
         >
-          <stop _ngcontent-ng-c3811030075="" stop-color="#E40035"></stop>
+          <stop _ngcontent-ng-c3811030075="" stopColor="#E40035"></stop>
           <stop
             _ngcontent-ng-c3811030075=""
             offset=".24"
-            stop-color="#F60A48"
+            stopColor="#F60A48"
           ></stop>
           <stop
             _ngcontent-ng-c3811030075=""
             offset=".352"
-            stop-color="#F20755"
+            stopColor="#F20755"
           ></stop>
           <stop
             _ngcontent-ng-c3811030075=""
             offset=".494"
-            stop-color="#DC087D"
+            stopColor="#DC087D"
           ></stop>
           <stop
             _ngcontent-ng-c3811030075=""
             offset=".745"
-            stop-color="#9717E7"
+            stopColor="#9717E7"
           ></stop>
           <stop
             _ngcontent-ng-c3811030075=""
             offset="1"
-            stop-color="#6C00F5"
+            stopColor="#6C00F5"
           ></stop>
         </linearGradient>
         <linearGradient
@@ -65,12 +65,12 @@ export default function AngularSVG() {
           y2="160.344"
           gradientUnits="userSpaceOnUse"
         >
-          <stop _ngcontent-ng-c3811030075="" stop-color="#FF31D9"></stop>
+          <stop _ngcontent-ng-c3811030075="" stopColor="#FF31D9"></stop>
           <stop
             _ngcontent-ng-c3811030075=""
             offset="1"
-            stop-color="#FF5BE1"
-            stop-opacity="0"
+            stopColor="#FF5BE1"
+            stopOpacity="0"
           ></stop>
         </linearGradient>
         <clipPath _ngcontent-ng-c3811030075="" id="a">
