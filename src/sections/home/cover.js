@@ -35,7 +35,7 @@ export default function Cover() {
             },
           }}
         >
-          Hello, I'm Anselmo
+          Hello, I{"'"}m Anselmo
         </Typography>
         <Typography
           variant="h3"
@@ -52,7 +52,7 @@ export default function Cover() {
           I think of problems as solutions and make them real trought coding.{" "}
           <span style={{ fontWeight: "bold" }}>BTW</span>: Remember to view this
           site with an smile, otherwise you might get a bad impression 😉.
-          (Trust me, we both don't want it)
+          (Trust me, we both don{"'"}t want it)
         </Typography>
 
         <Box

@@ -1,13 +1,6 @@
-import { ArrowRight, GitHub, Pageview } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  Chip,
-  Container,
-  Grid,
-  Paper,
-  Typography,
-} from "@mui/material";
+import { GitHub, Pageview } from "@mui/icons-material";
+import { Box, Button, Chip, Grid, Paper, Typography } from "@mui/material";
+import Image from "next/image";
 
 export default function ProjectCard({ project, xs = 12, md = 6 }) {
   const { photos = [], description, url, github, name, tools = [] } = project;
@@ -40,8 +33,8 @@ export default function ProjectCard({ project, xs = 12, md = 6 }) {
           <Typography variant="h6">{name}</Typography>
           {description}
           <Box sx={{ display: "flex", mt: 1, gap: 1, flexWrap: "wrap" }}>
-            {tools.map((tool) => (
-              <Chip label={tool} color="info" className="tool-tag" />
+            {tools.map((tool, i) => (
+              <Chip key={name} label={tool} color="info" className="tool-tag" />
             ))}
           </Box>
           <Box sx={{ width: "100%", textAlign: "end", mt: 2 }}>

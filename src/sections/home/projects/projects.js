@@ -28,8 +28,8 @@ export default function Projects() {
             Projects
           </Typography>
           <Typography variant="body2" sx={{ maxWidth: "700px" }}>
-            Some projects that I've done, some of these don't have a github url
-            because the code is private (belong to the organization) or don't
+            Some projects that I{"'"}ve done, some of these don{"'"}t have a github url
+            because the code is private (belong to the organization) or don{"'"}t
             have a website url to visit (maybe is not deployed)
           </Typography>
         </Grid>

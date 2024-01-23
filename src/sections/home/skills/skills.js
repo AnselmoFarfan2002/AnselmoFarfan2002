@@ -35,7 +35,7 @@ export default function Skills() {
           Skills
         </Typography>
         <Typography variant="body2">
-          Some skills that I've been collecting during all these years.
+          Some skills that I{"'"}ve been collecting during all these years.
         </Typography>
       </Grid>
       <Grid
