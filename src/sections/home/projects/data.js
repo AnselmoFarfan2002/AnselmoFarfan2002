@@ -26,4 +26,13 @@ export const projects = [
     url: "",
     github: "https://github.com/AnselmoFarfan2002/marvel-character-collection",
   },
+  {
+    name: "Sportainment",
+    description:
+      "A team project. Allows to manage events and registrations. It makes the fixture by itself and assigns categories to each athlete.",
+    photos: ["/projects/sportainment/sportainment-cover.png"],
+    tools: ["React", "NextJS", "Material UI", "MongoDB"],
+    url: "https://sportainment.pe/inicio",
+    github: null,
+  },
 ];

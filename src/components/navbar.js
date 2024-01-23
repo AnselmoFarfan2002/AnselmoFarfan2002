@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Construction,
   GitHub,
   Home,
   LinkedIn,
@@ -33,9 +34,6 @@ export default function NavBar() {
             <Button color="light" startIcon={<Home />} title="Home">
               Home
             </Button>
-            <Button color="light" startIcon={<PersonSearch />} title="About">
-              About
-            </Button>
             <Button
               color="light"
               startIcon={<Widgets />}
@@ -43,6 +41,14 @@ export default function NavBar() {
               href="#projects"
             >
               Projects
+            </Button>
+            <Button
+              color="light"
+              startIcon={<Construction />}
+              title="Skills"
+              href="#skills"
+            >
+              Skills
             </Button>
             <Button
               color="light"
