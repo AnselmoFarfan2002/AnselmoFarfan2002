@@ -13,7 +13,7 @@ export const projects = [
     description:
       "An app for a academic biological laboratory. Helps control the growth of microbial inoculums. It shows iteration reports, growth graphs and alert status according to the results obtained.",
     photos: ["/projects/ceim/ceim-cover.png"],
-    tools: ["React", "NextJS", "Material UI"],
+    tools: ["React", "NextJS", "Material UI", "NodeJS", "Express", "Mysql"],
     url: "https://www.samuelcueva.pe/auth/login",
     github: null,
   },
