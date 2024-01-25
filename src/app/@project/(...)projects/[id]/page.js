@@ -5,7 +5,7 @@ import { projects } from "@/sections/home/projects/data";
 import { Dialog, DialogContent, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
 
-export default function ({ params }) {
+export default function Modal({ params }) {
   const { id } = params;
   const project = projects[id];
   const router = useRouter();
