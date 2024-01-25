@@ -20,6 +20,13 @@ export default function Skills() {
       .forEach((card) => (card.style.filter = "none"));
   }, []);
 
+  const trackClick = useCallback(({ name }) => {
+    window.rudderanalytics.page();
+    window.rudderanalytics.track("skill-click", {
+      name,
+    });
+  }, []);
+
   return (
     <Grid
       container
@@ -56,6 +63,7 @@ export default function Skills() {
             cardProps={{
               onMouseOver,
               onMouseOut,
+              onClick: () => trackClick(skill),
             }}
           />
         ))}
