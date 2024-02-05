@@ -35,4 +35,16 @@ export const projects = [
     url: "https://sportainment.pe/inicio",
     github: null,
   },
+  {
+    name: "Moodidat Clone",
+    description:
+      "This is a clone of the Moodiday.com web page. It is just interfaces, and has been made to implement some NextJS routing concepts and Tailwind styles.",
+    photos: [
+      "/projects/moodiday-clone/cover.png",
+      "/projects/moodiday-clone/parallel-modal.png",
+    ],
+    tools: ["React", "NextJS", "Tailwind"],
+    url: "https://moodiday-clone.vercel.app/home",
+    github: "https://github.com/AnselmoFarfan2002/moodiday-clone",
+  },
 ];
