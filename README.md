@@ -1,5 +1,5 @@
 🤠 Hi, and welcome to my GitHub profile! Want you to know a little of me? <br>
-I'm a software engineer, passionate front-end dev 🖌️
+I'm a Full Stack engineer, passionate front-end dev 🖌️
 
 <img src="https://img.shields.io/badge/-❤️JavaScript❤️-darkorange?style=for-the-badge" height="28"> <img src="https://img.shields.io/badge/-Python-blue?style=for-the-badge" height="28"> <img src="https://img.shields.io/badge/-C++-darkblue?style=for-the-badge" height="28">
 
