@@ -33,6 +33,7 @@ In my most recent role, I worked in a high-ownership startup environment, collab
 - Internal tools and operational workflows
 - API integrations and backend services
 - Frontend systems with a strong product focus
+- AI-assisted moderation workflows for text, image, and video review systems
 - SaaS applications in fast-moving startup environments
 
 ## Currently
