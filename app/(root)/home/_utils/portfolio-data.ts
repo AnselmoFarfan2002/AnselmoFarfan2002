@@ -20,18 +20,18 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript"],
     url: "/projects/challenges",
   },
-  {
-    title: "E-commerce Dashboard",
-    description:
-      "Designed and developed an analytics dashboard with real-time sales metrics, role-based access, and order monitoring.",
-    stack: ["Next.js", "Prisma", "Tailwind", "Redis"],
-  },
-  {
-    title: "Media Processing Tool",
-    description:
-      "Created a browser-based tool for video editing workflows with overlays, background removal, and export controls.",
-    stack: ["React", "WebGL", "FFmpeg", "TypeScript"],
-  },
+  // {
+  //   title: "E-commerce Dashboard",
+  //   description:
+  //     "Designed and developed an analytics dashboard with real-time sales metrics, role-based access, and order monitoring.",
+  //   stack: ["Next.js", "Prisma", "Tailwind", "Redis"],
+  // },
+  // {
+  //   title: "Media Processing Tool",
+  //   description:
+  //     "Created a browser-based tool for video editing workflows with overlays, background removal, and export controls.",
+  //   stack: ["React", "WebGL", "FFmpeg", "TypeScript"],
+  // },
 ];
 
 export const skills = [
