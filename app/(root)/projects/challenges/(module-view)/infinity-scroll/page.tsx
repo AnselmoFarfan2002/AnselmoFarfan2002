@@ -57,9 +57,12 @@ export default function Page() {
           return (
             <div
               key={item.id + "_" + i}
-              className="p-4 border border-white/10 bg-white/5 min-w-40 flex-1 text-center rounded-2xl space-y-3"
+              className="p-4 border border-white/10 bg-white/5 min-w-40 flex-1 text-center rounded-2xl space-y-3 relative"
               ref={isLastItem ? lastItemRef : undefined}
             >
+              {isLastItem && (
+                <div className="absolute top-2 left-2 text-3xl">🕵️</div>
+              )}
               <div className="text-5xl">
                 {item.id.toString().padStart(2, "0")}
               </div>
