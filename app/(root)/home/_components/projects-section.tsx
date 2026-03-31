@@ -1,18 +1,21 @@
+import Link from "next/link";
 import { Project, projects } from "../_utils/portfolio-data";
+import TextLink from "../../_components/text-link";
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group rounded-4xl border border-white/10 bg-white/3 p-6 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/5">
+    <article className="group rounded-4xl border border-white/10 bg-white/3 p-6 transition hover:-translate-y-1 hover:border-white/20 hover:bg-white/5 space-y-6">
       <div className="flex items-start justify-between gap-4">
         <h4 className="text-xl font-medium text-white">{project.title}</h4>
         <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-neutral-400 text-nowrap">
           Case Study
         </span>
       </div>
-      <p className="mt-5 text-sm leading-7 text-neutral-400">
+      <p className="text-sm leading-7 text-neutral-400">
         {project.description}
       </p>
-      <div className="mt-6 flex flex-wrap gap-2">
+
+      <div className="flex flex-wrap gap-2">
         {project.stack.map((item) => (
           <span
             key={item}
@@ -22,6 +25,8 @@ function ProjectCard({ project }: { project: Project }) {
           </span>
         ))}
       </div>
+
+      {project.url && <TextLink href={project.url}>Take a look</TextLink>}
     </article>
   );
 }

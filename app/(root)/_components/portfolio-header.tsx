@@ -1,4 +1,4 @@
-import { navLinks } from "../_utils/portfolio-data";
+import { navLinks } from "../home/_utils/portfolio-data";
 
 export default function PortfolioHeader() {
   return (

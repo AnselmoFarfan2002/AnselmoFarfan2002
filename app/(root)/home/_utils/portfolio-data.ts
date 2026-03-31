@@ -2,6 +2,7 @@ export type Project = {
   title: string;
   description: string;
   stack: string[];
+  url?: string;
 };
 
 export const navLinks = [
@@ -13,10 +14,11 @@ export const navLinks = [
 
 export const projects: Project[] = [
   {
-    title: "Developer Platform",
+    title: "Mini-Projects",
     description:
-      "Built an internal platform to manage deployments, observability, and feature rollouts across multiple environments.",
-    stack: ["React", "TypeScript", "Node.js", "PostgreSQL"],
+      "A set of mini projects to practice various specific frontend use cases. Like Infinity Scroll, Drag and Drop, and more.",
+    stack: ["React", "TypeScript"],
+    url: "/projects/challenges",
   },
   {
     title: "E-commerce Dashboard",
@@ -42,6 +44,9 @@ export const skills = [
 ];
 
 export const stats = [
-  { value: `${new Date().getFullYear() - 2024}+`, label: "Years of experience" },
+  {
+    value: `${new Date().getFullYear() - 2024}+`,
+    label: "Years of experience",
+  },
   // { value: "20+", label: "Projects launched" },
 ];
