@@ -24,3 +24,19 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.gradient {
+  background: -webkit-linear-gradient(
+    45deg,
+    rgb(104, 207, 255),
+    rgba(0, 174, 255, 0.7)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: rgb(71, 255, 218);
+}
+
+.dark-scroll {
+  scrollbar-color: rgb(0, 146, 214) #111;
+}
