@@ -12,7 +12,7 @@ export default function PortfolioHeader() {
           ></img>
         </div>
         <div className="space-y-1">
-          <p className="text-sm uppercase tracking-[0.3em] text-neutral-400">
+          <p className="text-sm uppercase tracking-[0.3em] text-neutral-300">
             Portfolio
           </p>
           <h1 className="text-lg font-medium text-neutral-100">

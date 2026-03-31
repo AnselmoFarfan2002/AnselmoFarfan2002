@@ -31,7 +31,7 @@ export default function ProjectsSection() {
     <section id="projects" className="border-t border-white/10 py-16">
       <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="text-sm uppercase tracking-[0.25em] text-emerald-400">
+          <p className="text-sm uppercase tracking-[0.25em] text-neutral-300">
             Selected Work
           </p>
           <h3 className="mt-3 text-3xl font-semibold gradient md:text-4xl">

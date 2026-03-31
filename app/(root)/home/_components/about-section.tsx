@@ -2,7 +2,7 @@ export default function AboutSection() {
   return (
     <div className="grid gap-16 border-t border-white/10 py-16 md:grid-cols-3">
       <section id="about" className="md:col-span-1">
-        <p className="text-sm uppercase tracking-[0.25em] text-emerald-400">
+        <p className="text-sm uppercase tracking-[0.25em] text-neutral-300">
           About
         </p>
         <h3 className="mt-4 text-2xl font-semibold gradient">

@@ -14,7 +14,7 @@ export default function HeroSection() {
   return (
     <div className="grid items-end gap-12 py-16 md:grid-cols-[1.35fr_0.85fr] md:py-24">
       <div>
-        <p className="mb-4 text-sm uppercase tracking-[0.3em] text-emerald-400">
+        <p className="mb-4 text-sm uppercase tracking-[0.3em] text-neutral-300">
           Fullstack Engineer
         </p>
         <h2 className="max-w-4xl text-5xl font-semibold leading-tight tracking-tight text-white md:text-7xl gradient">

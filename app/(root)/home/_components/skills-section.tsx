@@ -9,7 +9,7 @@ export default function SkillsSection() {
       className="grid gap-10 border-t border-white/10 py-16 md:grid-cols-2"
     >
       <div>
-        <p className="text-sm uppercase tracking-[0.25em] text-emerald-400">
+        <p className="text-sm uppercase tracking-[0.25em] text-neutral-300">
           Core Strengths
         </p>
         <h3 className="mt-3 text-3xl font-semibold md:text-4xl gradient">

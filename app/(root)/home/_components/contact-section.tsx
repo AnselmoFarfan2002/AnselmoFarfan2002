@@ -6,7 +6,7 @@ export default function ContactSection() {
       id="contact"
       className="mb-10 rounded-[2.5rem] border border-white/10 bg-white/5 px-6 py-10 md:px-10 md:py-14"
     >
-      <p className="text-sm uppercase tracking-[0.25em] text-emerald-400">
+      <p className="text-sm uppercase tracking-[0.25em] text-neutral-300">
         Contact
       </p>
       <div className="mt-4 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -23,10 +23,10 @@ export default function ContactSection() {
           href="mailto:anselmofarfan2002@gmail.com"
           className={classNames(
             "inline-flex rounded-2xl px-6 py-3 text-sm text-neutral-950 transition hover:-translate-y-0.5",
-            "bg-linear-90 from-sky-500 to-sky-700 text-white text-shadow-xl",
+            "bg-linear-90 from-sky-500 to-sky-700 text-white text-shadow-xl uppercase font-bold",
           )}
         >
-          anselmofarfan2002@gmail.com
+          Get in touch
         </a>
       </div>
     </section>
