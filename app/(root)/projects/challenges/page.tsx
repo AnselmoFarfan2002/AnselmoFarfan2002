@@ -4,9 +4,13 @@ import TextLink from "../../_components/text-link";
 const CHALLENGES = [
   {
     title: "Infinity Scroll",
-    description:
-      "A simple infinite scroll implementation using IntersectionObserver.",
+    description: "Simple Infinite scroll using IntersectionObserver.",
     url: "infinity-scroll",
+  },
+  {
+    title: "Tic Tac Toe",
+    description: "Simple tic tac toe game built with React and TypeScript.",
+    url: "tic-tac-toe",
   },
 ];
 
@@ -19,7 +23,7 @@ export default function Page() {
           Mini Projects
         </h2>
       </div>
-      <div className="grid md:grid-cols-2">
+      <div className="grid md:grid-cols-2 gap-8">
         {CHALLENGES.map((challenge, i) => (
           <div
             key={challenge.url}
