@@ -13,9 +13,12 @@ const CHALLENGES = [
 export default function Page() {
   return (
     <div className="space-y-8 h-full py-8">
-      <h2 className="max-w-4xl text-5xl font-semibold leading-tight tracking-tight gradient md:text-7xl gradient">
-        Challenges
-      </h2>
+      <div className="space-y-2">
+        <TextLink href="/">Back to Home</TextLink>
+        <h2 className="max-w-4xl text-3xl font-semibold leading-tight tracking-tight gradient md:text-5xl gradient">
+          Mini Projects
+        </h2>
+      </div>
       <div className="grid md:grid-cols-2">
         {CHALLENGES.map((challenge, i) => (
           <div
