@@ -1,11 +1,12 @@
 "use client";
 
-import { formatDuration } from "./_lib/format-duration";
+import { formatDuration } from "./_lib/utils/format-duration";
 import { AudioSourceSection } from "./_lib/components/audio-source-section";
 import { FilterControlsSection } from "./_lib/components/filter-controls-section";
 import { NativePreviewSection } from "./_lib/components/native-preview-section";
 import { SpectrumCanvas } from "./_lib/components/spectrum-canvas";
 import { useAudioFilters } from "./_lib/hooks/use-audio-filters";
+import { FaMicrophone, FaRegStopCircle } from "react-icons/fa";
 
 export default function Page() {
   const audio = useAudioFilters();
@@ -40,27 +41,23 @@ export default function Page() {
           </div>
         </div>
 
-        <SpectrumCanvas canvasRef={audio.canvasRef} />
+        <div className="flex items-center">
+          <SpectrumCanvas canvasRef={audio.canvasRef} />
 
-        <div className="flex flex-wrap gap-3">
-          <button
-            onClick={
-              audio.isRecording ? audio.stopRecording : audio.startRecording
-            }
-            className="rounded-2xl px-5 py-3 font-semibold text-slate-950 transition active:scale-[0.98] bg-[linear-gradient(120deg,#22d3ee,#a7f3d0)] hover:brightness-110"
-          >
-            {audio.isRecording ? "Stop" : "Record"}
-          </button>
-
-          {audio.audioUrl && (
-            <a
-              href={audio.audioUrl}
-              download="recording.webm"
-              className="rounded-2xl border border-white/20 bg-white/5 px-5 py-3 font-medium hover:bg-white/10 transition"
+          <div className="flex flex-wrap gap-3">
+            <button
+              onClick={
+                audio.isRecording ? audio.stopRecording : audio.startRecording
+              }
+              className="rounded-2xl shrink-0 h-12 flex items-center justify-center aspect-square font-semibold text-slate-950 transition active:scale-[0.98] bg-[linear-gradient(120deg,#22d3ee,#a7f3d0)] hover:brightness-110 cursor-pointer"
             >
-              Download
-            </a>
-          )}
+              {audio.isRecording ? (
+                <FaRegStopCircle size={24} />
+              ) : (
+                <FaMicrophone size={24} />
+              )}
+            </button>
+          </div>
         </div>
 
         <AudioSourceSection
@@ -74,22 +71,9 @@ export default function Page() {
         {audio.selectedAudioUrl && (
           <FilterControlsSection
             voicePreset={audio.voicePreset}
-            filterType={audio.filterType}
-            filterFrequency={audio.filterFrequency}
-            filterQ={audio.filterQ}
-            filterGain={audio.filterGain}
-            outputGain={audio.outputGain}
-            playbackRate={audio.playbackRate}
             onApplyPreset={audio.applyPreset}
-            onSetCustom={() => audio.setVoicePreset("custom")}
-            onFilterTypeChange={audio.setFilterType}
-            onFilterFrequencyChange={audio.setFilterFrequency}
-            onFilterQChange={audio.setFilterQ}
-            onFilterGainChange={audio.setFilterGain}
-            onOutputGainChange={audio.setOutputGain}
-            onPlaybackRateChange={audio.setPlaybackRate}
             onPlayFiltered={audio.startFilteredPlayback}
-            onStopFiltered={audio.stopFilteredPlayback}
+            onDownloadFiltered={audio.downloadFilteredAudio}
           />
         )}
 

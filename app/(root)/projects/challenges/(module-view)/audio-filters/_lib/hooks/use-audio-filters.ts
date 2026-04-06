@@ -1,5 +1,6 @@
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
-import { VOICE_PRESETS } from "../presets";
+import { playAlienVoiceFromUrl } from "../utils/play-alien-voice";
+import { VOICE_PRESETS } from "../utils/presets";
 import { AudioSourceKind, VoicePresetKey } from "../types";
 
 const BAR_COUNT = 48;
@@ -35,6 +36,8 @@ export function useAudioFilters() {
   const recordingStartedAtRef = useRef<number | null>(null);
   const audioUrlRef = useRef<string | null>(null);
   const externalAudioUrlRef = useRef<string | null>(null);
+  const alienAudioRef = useRef<HTMLAudioElement | null>(null);
+  const alienAudioUrlRef = useRef<string | null>(null);
 
   const [isRecording, setIsRecording] = useState(false);
   const [isFilteredPlaying, setIsFilteredPlaying] = useState(false);
@@ -131,6 +134,7 @@ export function useAudioFilters() {
   const stopFilteredPlayback = useCallback(() => {
     stopSpectrum();
     analyserRef.current = null;
+    alienAudioRef.current?.pause();
 
     if (filteredSourceRef.current) {
       try {
@@ -296,6 +300,53 @@ export function useAudioFilters() {
       stopPlaybackSpectrum();
       previewAudioRef.current?.pause();
 
+      if (voicePreset === "megaphone") {
+        if (!selectedAudioUrl) {
+          setError("No hay URL de audio para el preset Alien");
+          return;
+        }
+
+        const alienAudio = await playAlienVoiceFromUrl(selectedAudioUrl, false);
+        if (alienAudioUrlRef.current) {
+          URL.revokeObjectURL(alienAudioUrlRef.current);
+        }
+        alienAudioRef.current = alienAudio;
+        alienAudioUrlRef.current = alienAudio.src;
+
+        cleanupPlaybackAudioContext();
+        const playbackContext = new window.AudioContext();
+        const playbackAnalyser = playbackContext.createAnalyser();
+        playbackAnalyser.fftSize = 2048;
+        playbackAnalyser.smoothingTimeConstant = 0.85;
+        const playbackSource = playbackContext.createMediaElementSource(alienAudio);
+        playbackSource.connect(playbackAnalyser);
+        playbackAnalyser.connect(playbackContext.destination);
+        playbackAudioContextRef.current = playbackContext;
+        playbackSourceRef.current = playbackSource;
+        playbackAnalyserRef.current = playbackAnalyser;
+
+        await playbackContext.resume();
+        analyserRef.current = playbackAnalyser;
+        drawSpectrum();
+
+        setIsFilteredPlaying(true);
+        try {
+          alienAudio.onended = () => {
+            setIsFilteredPlaying(false);
+            stopSpectrum();
+            analyserRef.current = null;
+          };
+          await alienAudio.play();
+        } finally {
+          if (alienAudioUrlRef.current) {
+            URL.revokeObjectURL(alienAudioUrlRef.current);
+            alienAudioUrlRef.current = null;
+          }
+          alienAudioRef.current = null;
+        }
+        return;
+      }
+
       if (!filteredAudioContextRef.current) {
         filteredAudioContextRef.current = new window.AudioContext();
       }
@@ -372,10 +423,38 @@ export function useAudioFilters() {
     outputGain,
     playbackRate,
     audioSource,
+    selectedAudioUrl,
+    voicePreset,
     stopFilteredPlayback,
     stopPlaybackSpectrum,
     stopSpectrum,
+    cleanupPlaybackAudioContext,
   ]);
+
+  const downloadFilteredAudio = useCallback(async () => {
+    if (!selectedAudioUrl) {
+      setError("No hay audio seleccionado para descargar");
+      return;
+    }
+
+    if (voicePreset !== "megaphone") {
+      setError("La descarga filtrada por ahora está disponible para preset Alien");
+      return;
+    }
+
+    try {
+      setError(null);
+      const alienAudio = await playAlienVoiceFromUrl(selectedAudioUrl, false);
+      const downloadLink = document.createElement("a");
+      downloadLink.href = alienAudio.src;
+      downloadLink.download = "alien-filtered.wav";
+      downloadLink.click();
+      window.setTimeout(() => URL.revokeObjectURL(alienAudio.src), 1_500);
+    } catch (err) {
+      console.error(err);
+      setError("No se pudo generar la descarga del audio filtrado");
+    }
+  }, [selectedAudioUrl, voicePreset]);
 
   const applyPreset = useCallback((presetKey: VoicePresetKey) => {
     const preset = VOICE_PRESETS[presetKey];
@@ -465,6 +544,9 @@ export function useAudioFilters() {
       if (externalAudioUrlRef.current) {
         URL.revokeObjectURL(externalAudioUrlRef.current);
       }
+      if (alienAudioUrlRef.current) {
+        URL.revokeObjectURL(alienAudioUrlRef.current);
+      }
     };
   }, [
     cleanupFilteredAudio,
@@ -494,6 +576,7 @@ export function useAudioFilters() {
     stopRecording,
     startFilteredPlayback,
     stopFilteredPlayback,
+    downloadFilteredAudio,
     startPlaybackSpectrum,
     stopPlaybackSpectrum,
     applyPreset,

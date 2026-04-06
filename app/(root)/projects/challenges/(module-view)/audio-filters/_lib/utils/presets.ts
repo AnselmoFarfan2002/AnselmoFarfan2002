@@ -1,4 +1,4 @@
-import { VoicePreset, VoicePresetKey } from "./types";
+import { VoicePreset, VoicePresetKey } from "../types";
 
 export const VOICE_PRESETS: Record<VoicePresetKey, VoicePreset> = {
   normal: {
