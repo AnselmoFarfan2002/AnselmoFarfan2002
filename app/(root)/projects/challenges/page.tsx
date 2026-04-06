@@ -3,6 +3,11 @@ import TextLink from "../../_components/text-link";
 
 const CHALLENGES = [
   {
+    title: "Audio Filters",
+    description: "Simple Audio Filters using Web Audio API.",
+    url: "audio-filters",
+  },
+  {
     title: "Infinity Scroll",
     description: "Simple Infinite scroll using IntersectionObserver.",
     url: "infinity-scroll",
