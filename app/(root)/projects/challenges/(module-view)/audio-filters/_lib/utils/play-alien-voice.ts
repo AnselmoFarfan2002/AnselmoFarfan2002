@@ -104,7 +104,10 @@ async function renderAlienBlob(audioUrl: string): Promise<Blob> {
   const inputBuffer = await decodeContext.decodeAudioData(arrayBuffer);
   await decodeContext.close();
 
-  const targetLength = Math.ceil(inputBuffer.length / 1.16);
+  const playbackRate = 1;
+  const effectTailSeconds = 0.4;
+  const renderedDurationSeconds = inputBuffer.duration / playbackRate + effectTailSeconds;
+  const targetLength = Math.ceil(renderedDurationSeconds * inputBuffer.sampleRate);
   const offline = new OfflineAudioContext(
     inputBuffer.numberOfChannels,
     targetLength,
@@ -113,7 +116,7 @@ async function renderAlienBlob(audioUrl: string): Promise<Blob> {
 
   const source = offline.createBufferSource();
   source.buffer = inputBuffer;
-  source.playbackRate.value = 1;
+  source.playbackRate.value = playbackRate;
   source.detune.value = 20;
 
   const highPass = offline.createBiquadFilter();
