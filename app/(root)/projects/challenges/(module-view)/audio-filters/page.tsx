@@ -64,8 +64,10 @@ export default function Page() {
           audioSource={audio.audioSource}
           hasRecordedAudio={Boolean(audio.audioUrl)}
           hasExternalAudio={Boolean(audio.externalAudioUrl)}
+          isLoadingExternalUrl={audio.isLoadingExternalUrl}
           onSourceChange={audio.setAudioSource}
           onUpload={audio.handleExternalAudioUpload}
+          onLoadExternalUrl={audio.handleExternalAudioUrlLoad}
         />
 
         {audio.selectedAudioUrl && (

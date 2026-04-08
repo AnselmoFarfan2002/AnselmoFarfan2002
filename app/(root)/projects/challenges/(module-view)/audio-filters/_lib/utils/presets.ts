@@ -1,6 +1,6 @@
 import { VoicePreset, VoicePresetKey } from "../types";
 
-export const VOICE_PRESETS: Record<VoicePresetKey, VoicePreset> = {
+export const VOICE_PRESETS: Partial<Record<VoicePresetKey, VoicePreset>> = {
   normal: {
     label: "Normal (No FX)",
     filterType: "allpass",
@@ -28,15 +28,6 @@ export const VOICE_PRESETS: Record<VoicePresetKey, VoicePreset> = {
     outputGain: 1,
     playbackRate: 1.4,
   },
-  batman: {
-    label: "Batman",
-    filterType: "lowpass",
-    filterFrequency: 520,
-    filterQ: 1.4,
-    filterGain: 5,
-    outputGain: 1.1,
-    playbackRate: 0.7,
-  },
   robot: {
     label: "Robot",
     filterType: "bandpass",
@@ -54,14 +45,5 @@ export const VOICE_PRESETS: Record<VoicePresetKey, VoicePreset> = {
     filterGain: -2,
     outputGain: 1,
     playbackRate: 1,
-  },
-  megaphone: {
-    label: "Alien",
-    filterType: "bandpass",
-    filterFrequency: 1550,
-    filterQ: 8.5,
-    filterGain: 6,
-    outputGain: 1.22,
-    playbackRate: 1.18,
   },
 };

@@ -5,7 +5,7 @@ export type VoicePresetKey =
   | "batman"
   | "robot"
   | "telephone"
-  | "megaphone";
+  | "alien";
 
 export type VoicePreset = {
   label: string;

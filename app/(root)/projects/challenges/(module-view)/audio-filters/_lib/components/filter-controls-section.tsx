@@ -26,11 +26,30 @@ export function FilterControlsSection({
           <select
             className="rounded-lg bg-black/35 border border-white/15 px-3 py-2"
             value={voicePreset}
-            onChange={(event) => onApplyPreset(event.target.value as VoicePresetKey)}
+            onChange={(event) =>
+              onApplyPreset(event.target.value as VoicePresetKey)
+            }
           >
-            {(Object.keys(VOICE_PRESETS) as VoicePresetKey[]).map((key) => (
+            {[
+              {
+                label: "Alien",
+                key: "alien",
+              },
+              {
+                label: "Normal",
+                key: "normal",
+              },
+              {
+                label: "Batman",
+                key: "batman",
+              },
+              {
+                label: "Squirrel",
+                key: "squirrel",
+              },
+            ].map(({ key, label }) => (
               <option key={key} value={key}>
-                {VOICE_PRESETS[key].label}
+                {label}
               </option>
             ))}
           </select>

@@ -2,9 +2,15 @@ import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
 import { playAlienVoiceFromUrl } from "../utils/play-alien-voice";
 import { VOICE_PRESETS } from "../utils/presets";
 import { AudioSourceKind, VoicePresetKey } from "../types";
+import { playBatmanVoice } from "../utils/play-batman-voice";
 
 const BAR_COUNT = 48;
 const RECORDING_MIME = "audio/webm";
+
+const filterMap = {
+  alien: playAlienVoiceFromUrl,
+  batman: playBatmanVoice,
+};
 
 export function useAudioFilters() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -41,8 +47,9 @@ export function useAudioFilters() {
 
   const [isRecording, setIsRecording] = useState(false);
   const [isFilteredPlaying, setIsFilteredPlaying] = useState(false);
+  const [isLoadingExternalUrl, setIsLoadingExternalUrl] = useState(false);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
-  const [externalAudioUrl, setExternalAudioUrl] = useState<string | null>(null);
+  const [externalAudioUrl, setExternalAudioUrl] = useState<string | null>("https://la-mochila-del-papu.nyc3.cdn.digitaloceanspaces.com/audios/response.wav");
   const [error, setError] = useState<string | null>(null);
   const [durationMs, setDurationMs] = useState(0);
   const [audioSource, setAudioSource] = useState<AudioSourceKind>("recorded");
@@ -300,13 +307,13 @@ export function useAudioFilters() {
       stopPlaybackSpectrum();
       previewAudioRef.current?.pause();
 
-      if (voicePreset === "megaphone") {
+      if (isCustomAudioFilter(voicePreset)) {
         if (!selectedAudioUrl) {
           setError("No hay URL de audio para el preset Alien");
           return;
         }
 
-        const alienAudio = await playAlienVoiceFromUrl(selectedAudioUrl, false);
+        const alienAudio = await filterMap[voicePreset](selectedAudioUrl, false);
         if (alienAudioUrlRef.current) {
           URL.revokeObjectURL(alienAudioUrlRef.current);
         }
@@ -318,7 +325,8 @@ export function useAudioFilters() {
         const playbackAnalyser = playbackContext.createAnalyser();
         playbackAnalyser.fftSize = 2048;
         playbackAnalyser.smoothingTimeConstant = 0.85;
-        const playbackSource = playbackContext.createMediaElementSource(alienAudio);
+        const playbackSource =
+          playbackContext.createMediaElementSource(alienAudio);
         playbackSource.connect(playbackAnalyser);
         playbackAnalyser.connect(playbackContext.destination);
         playbackAudioContextRef.current = playbackContext;
@@ -437,8 +445,10 @@ export function useAudioFilters() {
       return;
     }
 
-    if (voicePreset !== "megaphone") {
-      setError("La descarga filtrada por ahora está disponible para preset Alien");
+    if (isCustomAudioFilter(voicePreset)) {
+      setError(
+        `La descarga filtrada por ahora está disponible para preset ${voicePreset}`,
+      );
       return;
     }
 
@@ -457,7 +467,8 @@ export function useAudioFilters() {
   }, [selectedAudioUrl, voicePreset]);
 
   const applyPreset = useCallback((presetKey: VoicePresetKey) => {
-    const preset = VOICE_PRESETS[presetKey];
+    const preset = VOICE_PRESETS[presetKey] ?? VOICE_PRESETS.normal;
+    if (!preset) return;
     setVoicePreset(presetKey);
     setFilterType(preset.filterType);
     setFilterFrequency(preset.filterFrequency);
@@ -494,6 +505,74 @@ export function useAudioFilters() {
       setExternalAudioUrl(url);
       setAudioSource("external");
       event.currentTarget.value = "";
+    },
+    [cleanupPlaybackAudioContext, stopFilteredPlayback, stopPlaybackSpectrum],
+  );
+
+  const handleExternalAudioUrlLoad = useCallback(
+    async (urlInput: string) => {
+      const cleanUrl = urlInput.trim();
+      if (!cleanUrl) {
+        setError("Ingresa una URL de audio");
+        return;
+      }
+
+      let parsedUrl: URL;
+      try {
+        parsedUrl = new URL(cleanUrl);
+      } catch {
+        setError("La URL de audio no es válida");
+        return;
+      }
+
+      if (!["http:", "https:"].includes(parsedUrl.protocol)) {
+        setError("La URL debe iniciar con http:// o https://");
+        return;
+      }
+
+      try {
+        setIsLoadingExternalUrl(true);
+        setError(null);
+        stopPlaybackSpectrum();
+        stopFilteredPlayback();
+        previewAudioRef.current?.pause();
+        cleanupPlaybackAudioContext();
+
+        const response = await fetch(parsedUrl.toString());
+        if (!response.ok) {
+          throw new Error(`No se pudo descargar el audio (HTTP ${response.status})`);
+        }
+
+        const contentType = response.headers.get("content-type") ?? "";
+        if (contentType && !contentType.startsWith("audio/")) {
+          throw new Error("La URL no apunta a un recurso de audio");
+        }
+
+        const blob = await response.blob();
+        if (!blob.type.startsWith("audio/") && contentType && !contentType.startsWith("audio/")) {
+          throw new Error("No se pudo validar el tipo de audio");
+        }
+
+        if (externalAudioUrlRef.current?.startsWith("blob:")) {
+          URL.revokeObjectURL(externalAudioUrlRef.current);
+        }
+
+        const objectUrl = URL.createObjectURL(blob);
+        externalAudioBlobRef.current = blob;
+        decodedBufferRef.current = null;
+        decodedBlobRef.current = null;
+        setExternalAudioUrl(objectUrl);
+        setAudioSource("external");
+      } catch (err) {
+        console.error(err);
+        const fallbackError =
+          err instanceof Error
+            ? err.message
+            : "No se pudo cargar el audio desde la URL";
+        setError(fallbackError);
+      } finally {
+        setIsLoadingExternalUrl(false);
+      }
     },
     [cleanupPlaybackAudioContext, stopFilteredPlayback, stopPlaybackSpectrum],
   );
@@ -559,6 +638,7 @@ export function useAudioFilters() {
     canvasRef,
     isRecording,
     isFilteredPlaying,
+    isLoadingExternalUrl,
     audioUrl,
     externalAudioUrl,
     selectedAudioUrl,
@@ -581,6 +661,7 @@ export function useAudioFilters() {
     stopPlaybackSpectrum,
     applyPreset,
     handleExternalAudioUpload,
+    handleExternalAudioUrlLoad,
     setAudioSource,
     setVoicePreset,
     setFilterType,
@@ -590,4 +671,10 @@ export function useAudioFilters() {
     setOutputGain,
     setPlaybackRate,
   };
+}
+
+function isCustomAudioFilter(
+  filter: VoicePresetKey,
+): filter is keyof typeof filterMap {
+  return filter === "batman" || filter === "alien";
 }
