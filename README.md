@@ -38,7 +38,6 @@ In my most recent role, I worked in a high-ownership startup environment, collab
 
 ## Currently
 
-- Open to **Frontend** and **Full-Stack** opportunities
 - Interested in product-driven teams and startup environments
 - Focused on building useful, reliable, and well-executed software
 
